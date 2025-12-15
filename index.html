@@ -17,21 +17,21 @@
             margin: 0; padding: 0; width: 100%; height: 100%;
             background-color: #ffffff; 
             overflow: hidden;
-          
+           
             font-family: 'Pretendard', sans-serif;
             font-weight: 500; 
             cursor: pointer;
             touch-action: none;
         }
 
-      
+       
         .scene {
             position: relative; width: 100vw; height: 100vh;
             perspective: 2000px;
             display: flex; justify-content: center; align-items: center;
         }
 
-       
+        
         .overlay-text {
             position: absolute; top: 40px; left: 40px; z-index: 100;
             color: #ff0000; pointer-events: none;
@@ -60,11 +60,21 @@
         .usage-list { padding: 0; margin: 0; }
         .usage-list li { margin-bottom: 8px; word-break: keep-all; color: #ff0000; }
 
-       
+        /* --- 아이콘 독 (수정됨) --- */
         .icon-legend {
-            display: flex; justify-content: flex-start; gap: 20px;
-            max-width: 400px; margin-top: 30px; margin-bottom: 20px; pointer-events: auto;
+            position: absolute;
+            bottom: 40px; /* 하단에서 40px 띄움 */
+            left: 50%;
+            transform: translateX(-50%); /* 가로 중앙 정렬 */
+            
+            display: flex; 
+            justify-content: center; 
+            gap: 40px; /* 아이콘 간격 넓힘 */
+            
+            z-index: 200; /* 다른 요소보다 위에 배치 */
+            pointer-events: auto;
         }
+
         .legend-item {
             display: flex; flex-direction: column; align-items: center;
             font-size: 0.8rem; color: #ff0000; opacity: 0.7; cursor: pointer;
@@ -73,7 +83,7 @@
         .legend-item:hover, .legend-item.active { opacity: 1; transform: scale(1.1); font-weight: 700; }
         .legend-icon { width: 30px; height: 30px; margin-bottom: 5px; }
 
-       
+        
         .input_video {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;
             opacity: 0.05; filter: grayscale(100%) contrast(1.2); z-index: 0; pointer-events: none;
@@ -107,7 +117,7 @@
         .card-front, .card-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 3px; }
         .card-front { background-color: #1a1a1a; background-size: contain; background-repeat: no-repeat; background-position: center; filter: grayscale(100%) contrast(1.1); transition: filter 0.5s; }
         
-       
+        
         .card-back {
             background-color: #f5f5f5; 
             transform: rotateY(180deg); 
@@ -123,7 +133,7 @@
             background-position: center center;
         }
 
-       
+        
         .description-text {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -161,24 +171,7 @@
             이것은 단순한 이미지의 수정이 아니다. 기억에 대한 사형 선고다.
         </p>
 
-        <div class="icon-legend">
-            <div class="legend-item" onclick="window.filterCards('group4', this)">
-                <img src="https://raw.githubusercontent.com/ieunseo938/image/34a3561312b38d8b3d3bd83b6f6798e2c6296cfc/Asset%2015.svg" alt="삭제" class="legend-icon">
-                <span>삭제</span>
-            </div>
-            <div class="legend-item" onclick="window.filterCards('group3', this)">
-                <img src="https://raw.githubusercontent.com/ieunseo938/image/34a3561312b38d8b3d3bd83b6f6798e2c6296cfc/Asset%2013.svg" alt="잔여" class="legend-icon">
-                <span>잔여</span>
-            </div>
-            <div class="legend-item" onclick="window.filterCards('group2', this)">
-                <img src="https://raw.githubusercontent.com/ieunseo938/image/34a3561312b38d8b3d3bd83b6f6798e2c6296cfc/Asset%2014.svg" alt="합성" class="legend-icon">
-                <span>합성</span>
-            </div>
-            <div class="legend-item" onclick="window.filterCards('group1', this)">
-                <img src="https://raw.githubusercontent.com/ieunseo938/image/34a3561312b38d8b3d3bd83b6f6798e2c6296cfc/Asset%2016.svg" alt="왜곡" class="legend-icon">
-                <span>왜곡</span>
-            </div>
-        </div>
+        <!-- 아이콘 레전드 부분 삭제하고 아래로 이동시킴 -->
         
         <div class="usage-guide">
             <span class="usage-title">How to use</span>
@@ -188,6 +181,26 @@
                 <li>3. 카드를 다시 한 번 클릭하면 지워지거나 대체된 이미지들이 나타난다.</li>
                 <li>4. 아이콘을 클릭하면 아이콘에 해당되는 이미지만이 남는다. </li>
             </ul>
+        </div>
+    </div>
+
+    <!-- 아이콘 레전드 (하단 중앙 배치) -->
+    <div class="icon-legend">
+        <div class="legend-item" onclick="window.filterCards('group4', this)">
+            <img src="https://raw.githubusercontent.com/ieunseo938/image/34a3561312b38d8b3d3bd83b6f6798e2c6296cfc/Asset%2015.svg" alt="삭제" class="legend-icon">
+            <span>삭제</span>
+        </div>
+        <div class="legend-item" onclick="window.filterCards('group3', this)">
+            <img src="https://raw.githubusercontent.com/ieunseo938/image/34a3561312b38d8b3d3bd83b6f6798e2c6296cfc/Asset%2013.svg" alt="잔여" class="legend-icon">
+            <span>잔여</span>
+        </div>
+        <div class="legend-item" onclick="window.filterCards('group2', this)">
+            <img src="https://raw.githubusercontent.com/ieunseo938/image/34a3561312b38d8b3d3bd83b6f6798e2c6296cfc/Asset%2014.svg" alt="합성" class="legend-icon">
+            <span>합성</span>
+        </div>
+        <div class="legend-item" onclick="window.filterCards('group1', this)">
+            <img src="https://raw.githubusercontent.com/ieunseo938/image/34a3561312b38d8b3d3bd83b6f6798e2c6296cfc/Asset%2016.svg" alt="왜곡" class="legend-icon">
+            <span>왜곡</span>
         </div>
     </div>
 
